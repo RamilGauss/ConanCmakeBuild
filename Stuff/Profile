@@ -7,8 +7,9 @@ compiler.cppstd=20
 build_type=Debug
 
 [buildenv]
-CC=clang
-CXX=clang++
+CC=clang.exe
+CXX=clang++.exe
+toolset=clang-win
 
 [conf]
 tools.cmake.cmaketoolchain:generator=Ninja
