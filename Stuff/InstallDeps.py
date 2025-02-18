@@ -1,10 +1,24 @@
 import os
 import subprocess
 import platform
+import shutil
 from string import Template
 
 from DependencyConfig import GetDependencyInfoList
 import ProfileInfo
+
+def RecreateTempDir(tempFolderAbsPath):
+    tempDir = tempFolderAbsPath
+    if os.path.isdir(tempDir):
+        shutil.rmtree(tempDir)
+    os.mkdir(tempDir)
+
+def DetectProfile(profileAbsPath):
+    os.environ["CONAN_HOME"] = profileAbsPath
+    os.environ["CONAN_USER_HOME"] = profileAbsPath
+
+    cmd = ["conan", "profile", "detect"]
+    subprocess.run(cmd, stdout=subprocess.PIPE)
 
 def GenerateProfile():
     operatingSystem = platform.system()
@@ -56,6 +70,9 @@ def InstallDeps():
 
 
 def main():
+    tempFolderAbsPath = "C:\\Temp"
+    # RecreateTempDir(tempFolderAbsPath)
+    DetectProfile(f"{tempFolderAbsPath}\\conan2")
     GenerateProfile()
     InstallDeps()
 

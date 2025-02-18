@@ -32,3 +32,4 @@
 *.app
 CMakeUserPresets.json
 /.vscode
+*.pyc
