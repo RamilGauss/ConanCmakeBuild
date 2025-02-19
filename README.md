@@ -7,7 +7,17 @@
 
 ## Install tools
 
+`InstallTools.py`
+
+Открываем терминал от админа.
+
+Пишем и запускаем: Set-ExecutionPolicy RemoteSigned
+
+На вопрос отвечаем: A (Да для всех)
+
 ## Install dependecies
+
+`InstallDeps.py`
 
 ## Build project
 

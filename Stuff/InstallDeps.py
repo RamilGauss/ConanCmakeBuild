@@ -1,10 +1,10 @@
 import os
 import subprocess
-import platform
 import shutil
 from string import Template
 
 from DependencyConfig import GetDependencyInfoList
+from SystemInfo import GetOperatingSystem
 import ProfileInfo
 
 def RecreateTempDir(tempFolderAbsPath):
@@ -21,7 +21,7 @@ def DetectProfile(profileAbsPath):
     subprocess.run(cmd, stdout=subprocess.PIPE)
 
 def GenerateProfile():
-    operatingSystem = platform.system()
+    operatingSystem = GetOperatingSystem()
     buildType = "Debug"
 
     varDict = {
@@ -59,7 +59,7 @@ def InstallDeps():
         if len(dep.options) > 0:
             command.append("-o")
             command.append(dep.options[0])
-        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
+        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8', errors='replace')
         if result.returncode != 0 and result.stderr is not None:
             msgLen = len(result.stderr)
             halfLen = int(msgLen / 2)
@@ -71,9 +71,10 @@ def InstallDeps():
 
 def main():
     tempFolderAbsPath = "C:\\Temp"
-    # RecreateTempDir(tempFolderAbsPath)
+    RecreateTempDir(tempFolderAbsPath)
     DetectProfile(f"{tempFolderAbsPath}\\conan2")
     GenerateProfile()
     InstallDeps()
 
-main()
+if __name__ == "__main__":
+    main()

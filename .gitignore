@@ -33,3 +33,5 @@
 CMakeUserPresets.json
 /.vscode
 *.pyc
+/Stuff/build
+*.pyc

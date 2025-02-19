@@ -6,19 +6,19 @@ class DependencyInfo:
         self.options = options
 
 dependencyInfoObjList = [
-    # { "name": "fmt",        "version": "11.1.3",        "options" : [ "shared=True" ]},
-    # { "name": "openssl",    "version": "3.4.0",        "options" : [ "shared=True" ]},
-    # { "name": "gtest",      "version": "1.15.0",        "options" : [ "shared=True" ]},
-    # { "name": "sdl",        "version": "2.30.9",        "options" : [ "shared=True" ]},
+    { "name": "fmt",        "version": "11.1.3",        "options" : [ "shared=True" ]},
+    { "name": "openssl",    "version": "3.4.0",         "options" : [ "shared=True" ]},
+    { "name": "gtest",      "version": "1.15.0",        "options" : [ "shared=True" ]},
+    { "name": "sdl",        "version": "2.30.9",        "options" : [ "shared=True" ]},
     { "name": "boost",      "version": "1.86.0",        "options" : []},
-    # { "name": "rapidjson",  "version": "1.1.0",  "options" : []},
-    # { "name": "magic_enum", "version": "0.9.7",         "options" : []},
-    # { "name": "lz4",        "version": "1.10.0",        "options" : []},
-    # { "name": "bullet3",    "version": "3.25",          "options" : []},
-    # { "name": "stb",        "version": "cci.20240531",  "options" : []},
-    # { "name": "glad",       "version": "0.1.36",        "options" : []},
-    # { "name": "glm",        "version": "cci.20230113",  "options" : []},
-    # { "name": "inja",       "version": "3.4.0",         "options" : []}
+    { "name": "rapidjson",  "version": "1.1.0",         "options" : []},
+    { "name": "magic_enum", "version": "0.9.7",         "options" : []},
+    { "name": "lz4",        "version": "1.10.0",        "options" : []},
+    { "name": "bullet3",    "version": "3.25",          "options" : []},
+    { "name": "stb",        "version": "cci.20240531",  "options" : []},
+    { "name": "glad",       "version": "0.1.36",        "options" : []},
+    { "name": "glm",        "version": "cci.20230113",  "options" : []},
+    { "name": "inja",       "version": "3.4.0",         "options" : []}
 ]
 
 dependencyInfoList = []
