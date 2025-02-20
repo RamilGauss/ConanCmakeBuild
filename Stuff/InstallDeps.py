@@ -1,8 +1,8 @@
 import os
-import subprocess
 import shutil
 from string import Template
 
+from CommandRunner import  CommandRunner
 from DependencyConfig import GetDependencyInfoList
 from SystemInfo import GetOperatingSystem
 import ProfileInfo
@@ -18,7 +18,9 @@ def DetectProfile(profileAbsPath):
     os.environ["CONAN_USER_HOME"] = profileAbsPath
 
     cmd = ["conan", "profile", "detect"]
-    subprocess.run(cmd, stdout=subprocess.PIPE)
+
+    cmdRunner = CommandRunner()
+    cmdRunner.Run(cmd)
 
 def GenerateProfile():
     operatingSystem = GetOperatingSystem()
@@ -40,7 +42,8 @@ def InstallDeps():
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     fileNamePath = os.path.join(currentDirectory, ProfileInfo.fileName)
 
-    buildPath = os.path.join(currentDirectory, "build")
+    # buildPath = os.path.join(currentDirectory, "build")
+    buildPath = "./build"
 
     deps = GetDependencyInfoList()
 
@@ -59,7 +62,8 @@ def InstallDeps():
         if len(dep.options) > 0:
             command.append("-o")
             command.append(dep.options[0])
-        result = subprocess.run(command, capture_output=True, text=True, encoding='utf-8', errors='replace')
+        cmdRunner = CommandRunner()
+        result = cmdRunner.Run(command)
         if result.returncode != 0 and result.stderr is not None:
             msgLen = len(result.stderr)
             halfLen = int(msgLen / 2)

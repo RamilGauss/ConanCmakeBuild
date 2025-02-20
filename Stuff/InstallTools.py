@@ -1,5 +1,4 @@
-import subprocess
-
+from CommandRunner import  CommandRunner
 from ToolConfig import GetToolInfoList
 from SystemInfo import GetOperatingSystem
 
@@ -9,7 +8,8 @@ def InstallTools():
 
     for tool in tools:
         if tool.operatingSystem == "any" or tool.operatingSystem == operatingSystem:
-            result = subprocess.run(tool.commands, capture_output=True, text=True, encoding='utf-8', errors='replace')
+            cmdRunner = CommandRunner()
+            result = cmdRunner.Run(tool.commands)
             if result.returncode != 0 and result.stderr is not None:
                 msgLen = len(result.stderr)
                 halfLen = int(msgLen / 2)

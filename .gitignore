@@ -35,3 +35,4 @@ CMakeUserPresets.json
 *.pyc
 /Stuff/build
 *.pyc
+/build
